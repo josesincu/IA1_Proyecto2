@@ -1,0 +1,244 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+
+    <!--    Importacion de libreria tytus.hs -->
+    <script type="text/javascript" src="./tytus.js"></script>
+
+    <!-- Libreria para graficar -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Libreria para graficar arbol -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.js"></script>
+
+    
+
+
+    <title>Machine Learning</title>
+</head>
+<body>
+    <!--    MENU   -->
+    <nav>
+        <ul>
+            <li><a href="#">Archivo</a>
+                <ul>
+                    <li>
+                        <label for="csvFile">CSV</label>
+                        <input type="file" id="csvFile" accept=".csv" style="display:none;" onchange="handleFile(event)">
+                    </li>
+                    <li><a href="#">Datasets</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Algoritmo</a>
+                <ul>
+                    <li><a href="#" onclick="showPanel('LinearRegression')">Linear Regression</a></li>
+                    <li><a href="#" onclick="showPanel('DecisionTrees')">Decision Trees</a></li>
+                    <li><a href="#" onclick="showPanel('K-means')">K-means</a></li>
+        
+                </ul>
+            </li>
+            <li><a href="#">Acerca de:</a>
+                <ul>
+                    <li><label>Jose Castro Sincu</label></li>
+                    <li><label>201504115</label></li>
+                    <li><label>Curso Inteligencia Artificial 1</label></li>
+                   
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO PANEL -->
+    <div>
+        <select id="dataSelectX"></select>
+        <select id="dataSelectY"></select>
+    </div>
+     
+    <!-- 1. Linear Regression -->
+    <div id="LinearRegression" class="panel">
+        <h2>Linear Regression</h2>
+        <nav class="navLineal">    
+            <button onclick="showPanelLineal('EntrenamientoLineal'); EntrenarLineal()">Entrenamiento</button>
+            <button onclick="showPanelLineal('PredecirLineal'); PredecirLineal()">Prediccion</button>
+            <button onclick="showPanelLineal('GraficarLineal'); GraficarLineal()">Graficar</button>
+            
+        </nav>
+
+         <!--    PANELES PARA LINEAL REGRESION ENTRENAMIENTO, PREDICCION Y GRAFICAR -->
+        <div id="EntrenamientoLineal" class="panelLineal">
+            <h2>Entrenamiento</h2>
+            <p id="entrenamientoLineal"></p>
+           
+        </div>
+
+        <div id="PredecirLineal" class="panelLineal">   
+            <h2>Prediccion</h2>
+            <p id="prediccionLineal"></p>
+        </div>
+
+        <div id="GraficarLineal" class="panelLineal">
+            <h2>Grafica</h2>
+            <p id="graficaLineal"></p>    
+            <div id="chart_div" style="width: 900px; height: 500px;"></div>
+        </div>
+    </div>
+
+    <!-- 2. Polynomial Regression -->
+    <div id="PolynomialRegression" class="panel">
+        <h2>Polynomial Regression</h2>
+        <p>Contenido del algoritmo 2.</p>
+    </div>
+
+    <!-- 3. Decision Trees -->
+    <div id="DecisionTrees" class="panel">
+        <h2>Decision Trees</h2>
+        <br>
+        <table><th><label>Training example</label></th></table>
+        <table style="width:100%">
+            
+            <tr>
+                <td><label>Header</label></td>
+                <td><input style="width: 80%;" id="header" type="text" placeholder="Insert header" value="Gender,Career,Sportsman,Job,Children,Time,Married,House,Success"> </td>
+            </tr>
+            <tr>
+                <td><label>Training example</label></td>
+                <td>
+                    <textarea style="width: 80%;" id="textarea" rows="10" placeholder="Insert training data">
+                    Man,Yes,Yes,Yes,Yes,Long,Yes,Yes,Yes
+                    Woman,Yes,Yes,Yes,Yes,Long,Yes,Yes,Yes
+                    Man,Yes,Yes,Yes,Yes,Short,Yes,Yes,Yes
+                    Woman,Yes,Yes,Yes,Yes,Short,Yes,Yes,Yes
+                    Man,Yes,No,Yes,Yes,Short,No,No,No
+                    Woman,Yes,No,Yes,Yes,Short,No,No,No
+                    Man,No,Yes,Yes,No,Long,Yes,Yes,Yes
+                    Woman,No,Yes,Yes,No,Long,Yes,Yes,Yes
+                    Man,No,Yes,Yes,No,Long,Yes,No,Yes
+                    Woman,No,Yes,Yes,No,Long,Yes,No,Yes
+                    Man,No,Yes,Yes,No,Long,No,No,Yes
+                    Woman,No,Yes,Yes,No,Long,No,No,Yes
+                    Man,No,Yes,Yes,No,Short,No,Yes,No
+                    Woman,No,Yes,Yes,No,Short,No,Yes,No
+                    Man,Yes,No,Yes,No,Long,Yes,Yes,Yes
+                    Woman,Yes,No,Yes,No,Long,Yes,Yes,Yes
+                    Man,Yes,No,Yes,No,Long,Yes,No,Yes
+                    Woman,Yes,No,Yes,No,Long,Yes,No,Yes
+                    Man,No,No,Yes,No,Long,Yes,No,No
+                    Woman,No,No,Yes,No,Long,Yes,No,No
+                </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Predict</label></td>
+                <td><input style="width: 80%;" id="data" type="text" placeholder="Insert data" value="Man,Yes,No,Yes,No,Long,No,Yes"></td>
+            </tr>
+            <tr>
+                <td><button id="generate">Generate decision tree</button></td>
+                <td></td>
+            </tr>
+        </table>
+        <p id="prediction" style="font-size: 20px;"></p>
+        <h3 class="display-6 text-center mt-5">Result Tree:<br /></h3>
+        <div class="container mb-5">
+            <div style="width: 100%; height: 500px; border: 2px solid rgb(96, 160, 255); border-radius: 10px;" id="tree">
+            </div>
+        </div>
+    </div>
+
+    <!-- 4.  Naive Bayes -->
+    <div id="NaiveBayes" class="panel">
+        <h2>Naive Bayes</h2>
+        <p>Contenido del algoritmo 1.</p>
+    </div>
+
+    <!-- 5. Neural Networks -->
+    <div id="NeuralNetworks" class="panel">
+        <h2>Neural Networks</h2>
+        <p>Contenido del algoritmo 1.</p>
+    </div>
+
+    <!-- 6.  K-means -->
+    <div id="K-means" class="panel">
+        <h2>K-means</h2>
+        <nav class="navLineal">    
+            <button onclick="showPanelKmeans('KmeansLineal');">Kmeans Lineal</button>
+            <button onclick="showPanelKmeans('Kmeans2D');">Kmeans 2D</button>
+        </nav>
+
+         <!--    PANELES PARA KMEANS LINEAL Y 2D -->
+        <div id="KmeansLineal" class="panelKmeans">
+            <h2>Kmeans Lineal</h2>
+            <br>
+
+            <input style="width: 60%;" id="cluster_count" type="number" placeholder="Ingrese la cantidad de clusters" value=3>
+            
+            <br>
+            <input style="width: 60%;" id="linear_data" type="text" placeholder="Ingrese los numeros separados por comas (0,1,2,3,...)" value="-99,-92,-89,-87,-83,-82,-78,-76,-70,-62,-57,-55,-50,-42,-35,-33,-32,-30,-27,-17,-12,-10,0,1,2,25,29,33,39,41,53,54,67">
+            <br>
+            <input style="width: 60%;" id="iterations" type="number" placeholder="Ingrese la cantidad de iteraciones a realizar" value=3>
+            <br>
+            <button id="btnLineal">Graficar</button>
+
+            <div id="chart_div_kmeans" style="width: 900px; height: 500px;"></div>
+        </div>
+
+        <div id="Kmeans2D" class="panelKmeans">   
+            <h2>Kmeans 2D</h2>
+            <br>
+            <input style="width: 60%;" id="2d_cluster_count" type="number" placeholder="Ingrese la cantidad de clusters" value=3>
+            <br>
+            <!--pendiente añadir iteraciones -->
+            <input style="width: 60%;" id="2d_data" type="text"
+                placeholder="Ingrese los numeros separados por comas ([0,0],[0,1],[0,2]...)"
+                value="[11,6],[4,2],[15,0],[10,6],[7,8],[9,12],[13,0],[5,1],[0,13],[7,5],[6,1],[3,6],[0,10],[14,10],[6,14],[6,4],[4,9],[5,14],[9,9],[13,8]">
+            <br>
+            <input style="width: 60%;" id="2d_iterations" type="number"
+                placeholder="Ingrese la cantidad de iteraciones a realizar" value=3>
+            <br>
+
+            <button id="btnKmeans_2D">Graficar</button>
+
+            <div id="chart_div_kmeans_2D" style="width: 900px; height: 500px;"></div>
+            </div>
+
+    </div>
+
+    <!-- 7.  -->
+    <div id="K-nearestNeighbor" class="panel">
+        <h2>K-nearest Neighbor</h2>
+        <p>Contenido del algoritmo 1.</p>
+    </div>
+    
+    
+    <!-- PREFERIBLEMENTE EN ORDEN -->
+    <!-- FUNCIONES PRINCIPALES -->
+    <script src="./funciones_principales.js"></script>
+    <!-- FUNCION PARA LINEAL-->
+    <script src="./LinearRegresion.js"></script>
+
+    <!-- Graficar Kmeans -->
+    <script src="./Kmeans.js"></script>
+
+    
+    <!-- GRAFICAR TREE -->
+    <script src="./tree.js"></script>
+    
+    
+</body>
+</html>
+
+
+<!--
+
+<li><a href="#" onclick="showPanel('LinearRegression')">Linear Regression</a></li>
+<li><a href="#" onclick="showPanel('PolynomialRegression')">Polynomial Regression</a></li>
+<li><a href="#" onclick="showPanel('DecisionTrees')">Decision Trees</a></li>
+<li><a href="#" onclick="showPanel('NaiveBayes')">Naive Bayes</a></li>
+<li><a href="#" onclick="showPanel('NeuralNetworks')">Neural Networks</a></li>
+<li><a href="#" onclick="showPanel('K-means')">K-means</a></li>
+<li><a href="#" onclick="showPanel('K-nearestNeighbor')">K-nearest Neighbor</a></li>
+
+-->

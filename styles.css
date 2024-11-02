@@ -1,0 +1,209 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #005f99;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #0077b6;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0;
+}
+
+nav ul li a, nav ul li label {
+    display: block;
+    padding: 15px 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+nav ul li a:hover, nav ul li label:hover {
+    background-color: #00aaff;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0077b6;
+    min-width: 200px;
+    z-index: 1;
+    border-radius: 0 0 5px 5px;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    display: block;
+    width: 100%;
+}
+
+nav ul li ul li a, nav ul li ul li label {
+    padding: 10px;
+    font-weight: normal;
+    border-bottom: 1px solid #006080;
+}
+
+nav ul li ul li a:hover, nav ul li ul li label:hover {
+    background-color: #005f99;
+}
+
+nav ul li ul li:last-child a {
+    border-bottom: none;
+}
+
+nav ul li label:hover::before {
+    content: '→';
+    margin-right: 10px;
+}
+/*
+    Estilo para div de datos cargados en csv
+*/
+/* Estilo general para el contenedor */
+div {
+    margin: 20px; /* Margen alrededor del contenedor */
+}
+
+/* Estilo para los select */
+select {
+    padding: 10px;               /* Espaciado interno */
+    border: 2px solid #007BFF;  /* Bordes con un color azul */
+    border-radius: 5px;         /* Bordes redondeados */
+    font-size: 16px;            /* Tamaño de la fuente */
+    background-color: #f8f9fa;  /* Color de fondo */
+    color: #333;                /* Color del texto */
+    cursor: pointer;            /* Cambia el cursor al pasar el mouse */
+    transition: border-color 0.3s; /* Transición para el borde */
+}
+
+/* Estilo al hacer hover sobre los select */
+select:hover {
+    border-color: #0056b3;      /* Cambia el color del borde al pasar el mouse */
+}
+
+/* Estilo para el primer select */
+#dataSelectX {
+    margin-right: 10px;         /* Margen a la derecha del primer select */
+}
+
+/* Estilo para el segundo select */
+#dataSelectY {
+    /* Puedes agregar estilos específicos aquí si lo deseas */
+}
+
+
+
+/*
+    Inicio de panel
+*/
+.panel {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+.active {
+    display: block;
+}
+
+/*
+Color de botones: Entrenamiento, Prediccion, Grafica
+*/
+
+/* Estilo para la barra de navegación dentro de LinearRegression */
+.navLineal {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.navLineal button {
+    background-color: #0077b6; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer;
+}
+
+.navLineal button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+/* Panel Lineal de Entremaniento, prediccion, grafica */
+
+.panelLineal {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.activeLineal {
+    display: block;
+}
+
+
+/* Panel de Kmeans Lineal y 2D */
+
+.panelKmeans {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.activeKmeans {
+    display: block;
+}
+
+/*
+Para graficar arbol
+*/
+
+table {
+    border-collapse: collapse;
+    
+    text-align: center;
+    width: 100%;
+    }
+
+    th, td {
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+    background-color: #0077b6;
+    color: white;
+    }
