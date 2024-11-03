@@ -54,35 +54,39 @@
 
     <!-- CONTENIDO PANEL -->
     <div>
-        <select id="dataSelectX"></select>
-        <select id="dataSelectY"></select>
+       
     </div>
      
     <!-- 1. Linear Regression -->
     <div id="LinearRegression" class="panel">
         <h2>Linear Regression</h2>
         <nav class="navLineal">    
-            <button onclick="showPanelLineal('EntrenamientoLineal'); EntrenarLineal()">Entrenamiento</button>
-            <button onclick="showPanelLineal('PredecirLineal'); PredecirLineal()">Prediccion</button>
-            <button onclick="showPanelLineal('GraficarLineal'); GraficarLineal()">Graficar</button>
+            <button onclick="showPanelLineal('EntrenamientoLineal')">Entrenamiento</button>
+            <button onclick="showPanelLineal('PredecirLineal') ">Prediccion</button>
+            <button onclick="showPanelLineal('GraficarLineal')">Grafica</button>
             
         </nav>
 
          <!--    PANELES PARA LINEAL REGRESION ENTRENAMIENTO, PREDICCION Y GRAFICAR -->
         <div id="EntrenamientoLineal" class="panelLineal">
             <h2>Entrenamiento</h2>
+            <select id="dataSelectX"></select>
+            <select id="dataSelectY"></select>
+            <button class="regresionLineal" onclick="EntrenarLineal()">Entrenar</button>
             <p id="entrenamientoLineal"></p>
            
         </div>
 
         <div id="PredecirLineal" class="panelLineal">   
             <h2>Prediccion</h2>
+            <button class="regresionLineal" onclick="PredecirLineal()">Predecir</button>
             <p id="prediccionLineal"></p>
         </div>
 
         <div id="GraficarLineal" class="panelLineal">
             <h2>Grafica</h2>
-            <p id="graficaLineal"></p>    
+            <p id="graficaLineal"></p>
+            <button class="regresionLineal" onclick="GraficarLineal()">Graficar</button> 
             <div id="chart_div" style="width: 900px; height: 500px;"></div>
         </div>
     </div>
@@ -97,46 +101,24 @@
     <div id="DecisionTrees" class="panel">
         <h2>Decision Trees</h2>
         <br>
-        <table><th><label>Training example</label></th></table>
         <table style="width:100%">
             
             <tr>
                 <td><label>Header</label></td>
-                <td><input style="width: 80%;" id="header" type="text" placeholder="Insert header" value="Gender,Career,Sportsman,Job,Children,Time,Married,House,Success"> </td>
+                <td><input style="width: 80%;" id="header" type="text" placeholder="Insert header"> </td>
             </tr>
             <tr>
-                <td><label>Training example</label></td>
+                <td><label>Training</label></td>
                 <td>
-                    <textarea style="width: 80%;" id="textarea" rows="10" placeholder="Insert training data">
-                    Man,Yes,Yes,Yes,Yes,Long,Yes,Yes,Yes
-                    Woman,Yes,Yes,Yes,Yes,Long,Yes,Yes,Yes
-                    Man,Yes,Yes,Yes,Yes,Short,Yes,Yes,Yes
-                    Woman,Yes,Yes,Yes,Yes,Short,Yes,Yes,Yes
-                    Man,Yes,No,Yes,Yes,Short,No,No,No
-                    Woman,Yes,No,Yes,Yes,Short,No,No,No
-                    Man,No,Yes,Yes,No,Long,Yes,Yes,Yes
-                    Woman,No,Yes,Yes,No,Long,Yes,Yes,Yes
-                    Man,No,Yes,Yes,No,Long,Yes,No,Yes
-                    Woman,No,Yes,Yes,No,Long,Yes,No,Yes
-                    Man,No,Yes,Yes,No,Long,No,No,Yes
-                    Woman,No,Yes,Yes,No,Long,No,No,Yes
-                    Man,No,Yes,Yes,No,Short,No,Yes,No
-                    Woman,No,Yes,Yes,No,Short,No,Yes,No
-                    Man,Yes,No,Yes,No,Long,Yes,Yes,Yes
-                    Woman,Yes,No,Yes,No,Long,Yes,Yes,Yes
-                    Man,Yes,No,Yes,No,Long,Yes,No,Yes
-                    Woman,Yes,No,Yes,No,Long,Yes,No,Yes
-                    Man,No,No,Yes,No,Long,Yes,No,No
-                    Woman,No,No,Yes,No,Long,Yes,No,No
-                </textarea>
+                    <textarea style="width: 80%;" id="textarea" rows="10" placeholder="Insert training data"></textarea>
                 </td>
             </tr>
             <tr>
                 <td><label>Predict</label></td>
-                <td><input style="width: 80%;" id="data" type="text" placeholder="Insert data" value="Man,Yes,No,Yes,No,Long,No,Yes"></td>
+                <td><input style="width: 80%;" id="data" type="text" placeholder="Insert data"></td>
             </tr>
             <tr>
-                <td><button id="generate">Generate decision tree</button></td>
+                <td><button class="regresionLineal" id="generate">Graficar Decision Tree</button></td>
                 <td></td>
             </tr>
         </table>
@@ -171,16 +153,17 @@
          <!--    PANELES PARA KMEANS LINEAL Y 2D -->
         <div id="KmeansLineal" class="panelKmeans">
             <h2>Kmeans Lineal</h2>
+
             <br>
 
-            <input style="width: 60%;" id="cluster_count" type="number" placeholder="Ingrese la cantidad de clusters" value=3>
+            <input style="width: 60%;" id="cluster_count" type="number" placeholder="Ingrese la cantidad de clusters" value="">
             
             <br>
-            <input style="width: 60%;" id="linear_data" type="text" placeholder="Ingrese los numeros separados por comas (0,1,2,3,...)" value="-99,-92,-89,-87,-83,-82,-78,-76,-70,-62,-57,-55,-50,-42,-35,-33,-32,-30,-27,-17,-12,-10,0,1,2,25,29,33,39,41,53,54,67">
+            <input style="width: 60%;" id="linear_data" type="text" placeholder="Ingrese los numeros separados por comas (0,1,2,3,...)">
             <br>
-            <input style="width: 60%;" id="iterations" type="number" placeholder="Ingrese la cantidad de iteraciones a realizar" value=3>
+            <input style="width: 60%;" id="iterations" type="number" placeholder="Ingrese la cantidad de iteraciones a realizar" >
             <br>
-            <button id="btnLineal">Graficar</button>
+            <button class="regresionLineal" id="btnLineal">Graficar</button>
 
             <div id="chart_div_kmeans" style="width: 900px; height: 500px;"></div>
         </div>
@@ -188,18 +171,15 @@
         <div id="Kmeans2D" class="panelKmeans">   
             <h2>Kmeans 2D</h2>
             <br>
-            <input style="width: 60%;" id="2d_cluster_count" type="number" placeholder="Ingrese la cantidad de clusters" value=3>
+            <input style="width: 60%;" id="2d_cluster_count" type="number" placeholder="Ingrese la cantidad de clusters" >
             <br>
             <!--pendiente añadir iteraciones -->
-            <input style="width: 60%;" id="2d_data" type="text"
-                placeholder="Ingrese los numeros separados por comas ([0,0],[0,1],[0,2]...)"
-                value="[11,6],[4,2],[15,0],[10,6],[7,8],[9,12],[13,0],[5,1],[0,13],[7,5],[6,1],[3,6],[0,10],[14,10],[6,14],[6,4],[4,9],[5,14],[9,9],[13,8]">
+            <input style="width: 60%;" id="2d_data" type="text" placeholder="Ingrese los numeros separados por comas ([0,0],[0,1],[0,2]...)">
             <br>
-            <input style="width: 60%;" id="2d_iterations" type="number"
-                placeholder="Ingrese la cantidad de iteraciones a realizar" value=3>
+            <input style="width: 60%;" id="2d_iterations" type="number" placeholder="Ingrese la cantidad de iteraciones a realizar">
             <br>
 
-            <button id="btnKmeans_2D">Graficar</button>
+            <button class="regresionLineal" id="btnKmeans_2D">Graficar</button>
 
             <div id="chart_div_kmeans_2D" style="width: 900px; height: 500px;"></div>
             </div>

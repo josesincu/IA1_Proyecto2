@@ -46,6 +46,31 @@ function showPanel(panelId) {
         panel.classList.remove('active');
     });
     document.getElementById(panelId).classList.add('active');
+    console.log(contenidoCSV);
+    if(panelId === "DecisionTrees"){
+        
+        document.getElementById("header").value = contenidoCSV[1][0].slice(1, -1).split(',');
+        //const isTwoDimensional = Array.isArray(contenidoCSV) && contenidoCSV.every(row => Array.isArray(row));
+       
+        let tempData = "";
+        JSON.parse(contenidoCSV[1][1]).forEach(arr => {
+            tempData += arr +"\n";
+        });
+
+        document.getElementById("textarea").value = tempData;
+        document.getElementById("data").value = contenidoCSV[1][2].slice(1, -1).split(',');
+    }
+    
+}
+
+// Panel para Regresion Lineal
+function showPanelLineal(panelId) {
+    document.querySelectorAll('.panelLineal').forEach(panel => {
+
+        panel.classList.remove('activeLineal');
+    });
+    
+    document.getElementById(panelId).classList.add('activeLineal');
 
     //Cargando los datos con cada modelo 
     //Variable SelectX
@@ -67,7 +92,6 @@ function showPanel(panelId) {
         selectX.appendChild(option);
     });
 
-
     // Agregar opciones al select para Y
     encabezado.forEach(row => {
         const option = document.createElement('option');
@@ -75,17 +99,6 @@ function showPanel(panelId) {
         option.textContent = row; // Mostrar ambos valores
         selectY.appendChild(option);
     });
-    
-}
-
-// Panel para Regresion Lineal
-function showPanelLineal(panelId) {
-    document.querySelectorAll('.panelLineal').forEach(panel => {
-
-        panel.classList.remove('activeLineal');
-    });
-    
-    document.getElementById(panelId).classList.add('activeLineal');
 }
 
 // Panel para KMeans
@@ -96,11 +109,17 @@ function showPanelKmeans(panelId) {
     });
     
     document.getElementById(panelId).classList.add('activeKmeans');
+
+    if(panelId === "KmeansLineal"){
+        document.getElementById("cluster_count").value = contenidoCSV[1][0];
+        document.getElementById("linear_data").value = JSON.parse(contenidoCSV[1][1]);
+        document.getElementById("iterations").value = contenidoCSV[1][2];
+    }else if(panelId === "Kmeans2D"){
+        document.getElementById("2d_cluster_count").value = contenidoCSV[1][0];
+        console.log(contenidoCSV[1][1]);
+        document.getElementById("2d_data").value = contenidoCSV[1][1];
+        document.getElementById("2d_iterations").value = contenidoCSV[1][2];
+    }else{
+        alert("Error, este modelo no posee entradas aun!!!");
+    }
 }
-
-
-//retornar Variables
-
-
-
-
